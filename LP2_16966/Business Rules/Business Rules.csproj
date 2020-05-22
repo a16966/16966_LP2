@@ -43,11 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="FilmesR.cs" />
+    <Compile Include="SeriesR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilizadoresR.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data Layer\Data Layer.csproj">
+      <Project>{a3f78069-aaaa-4f45-8fbb-333f9e711285}</Project>
+      <Name>Data Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LP2_16966\Business Objects.csproj">
+      <Project>{ff2f7d23-ec52-46e7-a8c8-65191a0c76d2}</Project>
+      <Name>Business Objects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

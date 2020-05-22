@@ -49,71 +49,144 @@ namespace DL
         #region METODOS PUBLICOS UTILIZADOR
 
         /// <summary>
-        /// Compara o Username recebido com os que existem na lista
+        /// Regista um novo cliente
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="novoUtilizador"></param>
         /// <returns></returns>
-        static public bool ExisteUtilizador(string Name)
+        public static bool InsereUtilizador(Utilizador novoUtilizador)
         {
-
-            bool result = true;
-
-            foreach (Utilizador u in listaUtilizadores) //Percorre a lista de utilizadores que vai ser recebida como parametro
+            bool x = false;
+            try
             {
+                listaUtilizadores.Add(novoUtilizador);
+                x = true;
 
-                if (Name == u.Username)
-                {
-
-                    result = true;
-                    break; //Usado para parar de percorrer a lista de utilizadores
-
-                }
-
-                else //Break não é usado para continuar a percorrer a lista até ao fim
-                {
-
-                    result = false;
-
-                }
+            }
+            catch (Exception s)
+            {
+                throw new Exception("Já existe uma conta", s);
 
             }
 
-            return result;
+            return x;
         }
-
-        static public bool RegistarUsuario(Utilizador u)
+        /// <summary>
+        /// VÊ se a determinada pessoa existe
+        /// </summary>
+        /// <param name="utilizador"></param>
+        /// <returns></returns>
+        public static bool ExisteUtilizador(Utilizador username)
         {
+            try
+            {
+                foreach (Utilizador u in listaUtilizadores)
+                {
+                    if (u.Username == username)      
+                        return true;
+                }
 
-            Utilizadores x = new Utilizadores();
-
-            if (ExisteUtilizador(u.Username) == true)        //se existir já esse username então já n regista
                 return false;
-
-            if (listaUtilizadores.Count == 0)                    //se não existir nenhum esse passa a ser o idCliente 1
-                u.IdCliente = 1;
-
-            else
+            }
+            catch (Exception s)
             {
 
-                int aux = listaUtilizadores[listaUtilizadores.Count - 1].IdCliente;
-                u.IdCliente = aux + 1; //Adiciona o valor de idCliente ao novo Utilizador , incrementando o do último por 1
+                throw new Exception("Já existe utilizador", s);
+            }
+        }
+        /// <summary>
+        /// Função que permitirá alterar a data do utilizador, username e password
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        static public bool ChangeUserData(Utilizador u, string username, string password)
+        {
+
+            bool x = false;
+            try
+            {
+                if (u.Username == username && u.Password == password)
+                {
+                    return false;
+                }
+            }
+            catch (Exception s)
+            {
+                throw new Exception("Voce inseriu o mesmo username ou o username de outra pessoa assim como a password", s);
 
             }
 
-            listaUtilizadores.Add(u);
-            return true;
+            foreach (Utilizador e in listaUtilizadores)
+            {
 
+                if (e == u)
+                { 
+                    e.Username = username;
+                    e.Password = password;
+
+                    u.Username = e.Username;
+                    u.Password = e.Password;
+                    x = true;
+                    break;
+                }
+            }
+            return x;
         }
+
+
 
         #endregion METODOS PUBLICOS UTILIZADOR
 
         #region METODOS PRIVADOS UTILIZADOR
+        /// <summary>
+        /// Carrega ficheiro que terá a informação em binário
+        /// </summary>
         private static void LoadData()
         {
+            string dirFicheiro;
+            Stream stream;
 
+            dirFicheiro = Environment.CurrentDirectory + "//utilizadores.dat";
+
+
+            // Se o ficheiro alvo não existir, ignorar o resto das iterações do presente método
+            if (File.Exists(dirFicheiro) == false) return;
+
+            // Inicializar stream de leitura através da abertura do ficheiro onde os dados estão guardados  
+            stream = File.Open(dirFicheiro, FileMode.Open);
+
+            var serializador = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+
+            // Carregar binário para lista
+            listaUtilizadores = (List<Utilizador>)serializador.Deserialize(stream);
+            stream.Close();
+        }
+        /// <summary>
+        /// Escreve e guarda as informações do ficheiro
+        /// </summary>
+        private static void WriteData()
+        {
+            // Declaração de variáveis locais
+            string dirFicheiro;
+            Stream stream;
+
+            // Definir diretorio onde o ficheiro sera manipulado
+            dirFicheiro = Environment.CurrentDirectory + "//utilizadores.dat";
+
+
+            // Inicializar stream de escrita
+            stream = File.Create(dirFicheiro);
+
+            var serializador = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+            // Serializar objecto
+            serializador.Serialize(stream, listaUtilizadores);
+
+            stream.Close();
         }
         #endregion METODOS PRIVADOS UTILIZADOR
-
     }
-
 }
+

@@ -18,7 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Layer", "Data Layer\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation Layer", "Presentation Layer\Presentation Layer.csproj", "{BDCCB8F9-8A65-4D6E-B535-49C780D65859}"
 	ProjectSection(ProjectDependencies) = postProject
-		{FF2F7D23-EC52-46E7-A8C8-65191A0C76D2} = {FF2F7D23-EC52-46E7-A8C8-65191A0C76D2}
 		{003D9BB3-1D04-40C3-827F-424A4F57678F} = {003D9BB3-1D04-40C3-827F-424A4F57678F}
 	EndProjectSection
 EndProject
