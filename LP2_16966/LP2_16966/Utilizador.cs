@@ -29,7 +29,7 @@ namespace BO
             set
             {
 
-                if (idade > 0)
+                if (idade > 18)
                 {
 
                     idade = value;

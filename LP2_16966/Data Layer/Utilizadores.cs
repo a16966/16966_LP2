@@ -100,13 +100,13 @@ namespace DL
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        static public bool ChangeUserData(Utilizador u, string username, string password)
+        static public bool ChangeUserData(Utilizador u, string username, string password, int idade)
         {
 
             bool x = false;
             try
             {
-                if (u.Username == username && u.Password == password)
+                if (u.Username == username && u.Password == password && u.Idade== idade) 
                 {
                     return false;
                 }
@@ -124,9 +124,11 @@ namespace DL
                 { 
                     e.Username = username;
                     e.Password = password;
+                    e.Idade = idade;
 
                     u.Username = e.Username;
                     u.Password = e.Password;
+                    u.Idade = e.Idade;
                     x = true;
                     break;
                 }

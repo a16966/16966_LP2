@@ -16,11 +16,30 @@ namespace Presentation_Layer
             //criar objetos
             BO.Filme filme = new BO.Filme();
             BO.Utilizador utilizador = new BO.Utilizador();
-
             filme.Titulo = "Superhomem";
+            filme.Genero = TIPOFILME.Acao;
             utilizador.Username = "Joao95";
-            ///main por terminar
-            
+
+            //registar Filme e Utilizador
+            Console.WriteLine("Registar Utilizador: {0}", UtilizadoresR.InsereUtilizador(utilizador));
+            Console.WriteLine("Registar Filme: {0}", FilmesR.InsereFilme(filme));
+
+            //tentar criar o mesmo filme ou utilizador
+            Console.WriteLine("Registar o mesmo filme: {0}", FilmesR.InsereFilme(filme));
+            Console.WriteLine("Registar o mesmo filme: {0}", UtilizadoresR.InsereUtilizador(utilizador));
+
+            //Tenta adicionar filme aos favoritos
+            Console.WriteLine("Registar o mesmo filme nos favoritos: {0}", FilmesR.RegistaFavoritoFilme(filme));
+
+            utilizador.Password = "4549";
+            utilizador.Idade = 21;
+            //Editar dados utilizador
+            Console.WriteLine("Editar Utilizador: {0}", UtilizadoresR.ChangeUserData(utilizador, "Joao96", "3124123", 21));
+            filme.IdFilme = 3124;
+            //Eliminar Filme
+            Console.WriteLine("Eliminar Filme Utilizador: {0}", FilmesR.RemoveFilme(3124));
+
+
         }
     }
 }

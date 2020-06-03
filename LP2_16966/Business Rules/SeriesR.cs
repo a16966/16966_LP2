@@ -10,7 +10,7 @@ using DL;
 
 namespace BR
 {
-    class SeriesR
+    public class SeriesR
     {
         /// <summary>
         /// função que insere um nova serie, caso exista dá return false

@@ -9,7 +9,7 @@ using DL;
 
 namespace BR
 {
-    class UtilizadoresR
+    public class UtilizadoresR
     {
         /// <summary>
         /// Insere o utilizador se não existir
@@ -31,9 +31,9 @@ namespace BR
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        static public bool ChangeUserData(Utilizador u, string username, string password)
+        static public bool ChangeUserData(Utilizador u, string username, string password, int idade)
         {
-            return (Utilizadores.ChangeUserData(u, username, password));
+            return (Utilizadores.ChangeUserData(u, username, password, idade));
         }
     }
 }

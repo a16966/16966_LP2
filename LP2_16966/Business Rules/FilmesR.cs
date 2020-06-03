@@ -9,7 +9,7 @@ using DL;
 
 namespace BR
 {
-    class FilmesR
+    public class FilmesR
     {
         /// <summary>
         /// função que insere um novo filme, caso exista dá return false
