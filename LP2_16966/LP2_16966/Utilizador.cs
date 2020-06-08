@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2020/06/03
+// Versão: 1
+// Comentários: Classe de Utilizador
+
+using System;
 
 namespace BO
 {
-
+    //classe Utilizador
     [Serializable]
     public class Utilizador
     {

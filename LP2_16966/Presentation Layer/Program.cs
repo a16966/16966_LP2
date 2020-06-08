@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2019/06/03
+// Versão: 1
+// Comentários: Main
+
 
 using BO;
 using BR;
+using System;
 
 namespace Presentation_Layer
 {
@@ -22,14 +24,14 @@ namespace Presentation_Layer
 
             //registar Filme e Utilizador
             Console.WriteLine("Registar Utilizador: {0}", UtilizadoresR.InsereUtilizador(utilizador));
-            Console.WriteLine("Registar Filme: {0}", FilmesR.InsereFilme(filme));
+            Console.WriteLine("Registar Filme: {0}", FilmesR.InsereFilme(filme.Titulo));
 
             //tentar criar o mesmo filme ou utilizador
-            Console.WriteLine("Registar o mesmo filme: {0}", FilmesR.InsereFilme(filme));
+            Console.WriteLine("Registar o mesmo filme: {0}", FilmesR.InsereFilme(filme.Titulo));
             Console.WriteLine("Registar o mesmo filme: {0}", UtilizadoresR.InsereUtilizador(utilizador));
 
             //Tenta adicionar filme aos favoritos
-            Console.WriteLine("Registar o mesmo filme nos favoritos: {0}", FilmesR.RegistaFavoritoFilme(filme));
+            Console.WriteLine("Registar o mesmo filme nos favoritos: {0}", FilmesR.RegistaFavoritoFilme(filme.Titulo));
 
             utilizador.Password = "4549";
             utilizador.Idade = 21;

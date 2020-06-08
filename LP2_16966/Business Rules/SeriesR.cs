@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2020/06/03
+// Versão: 1
+// Comentários: Classe de Series
+
+
 
 using BO;
 using DL;
+using System.Collections.Generic;
 
 
 namespace BR
@@ -17,7 +20,7 @@ namespace BR
         /// </summary>
         /// <param name="novaSerie"></param>
         /// <returns></returns>
-        public static bool InsereSerie(Serie novaSerie)
+        public static bool InsereSerie(string novaSerie)
         {
             //verifica se o determinado filme já existe
             if (Series.ExisteSerie(novaSerie))
@@ -31,7 +34,7 @@ namespace BR
         /// </summary>
         /// <param name="nomeserie"></param>
         /// <returns></returns>
-        public static bool MostraDadosSeries(string nomeserie)
+        public static string MostraDadosSeries(string nomeserie)
         {
             return Series.MostraDadosSeries(nomeserie);
         }
@@ -50,7 +53,7 @@ namespace BR
         /// </summary>
         /// <param name="novoFilme"></param>
         /// <returns></returns>
-        public static List<Serie> RegistaFavoritoSerie(Serie novaSerie)
+        public static List<Serie> RegistaFavoritoSerie(string novaSerie)
         {
             return Series.RegistaFavoritoSerie(novaSerie);
         }

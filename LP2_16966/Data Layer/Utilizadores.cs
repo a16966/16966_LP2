@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2019/06/03
+// Versão: 1
+// Comentários: Classe de Utilizadores
+
 using BO;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 
 namespace DL
@@ -58,6 +61,7 @@ namespace DL
             bool x = false;
             try
             {
+
                 listaUtilizadores.Add(novoUtilizador);
                 x = true;
 
@@ -75,7 +79,7 @@ namespace DL
         /// </summary>
         /// <param name="utilizador"></param>
         /// <returns></returns>
-        public static bool ExisteUtilizador(Utilizador username)
+        public static bool ExisteUtilizador(string username)
         {
             try
             {

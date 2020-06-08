@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2019/06/03
+// Versão: 1
+// Comentários: Classe de Validar Filmes
+
 
 using BO;
 using DL;
+using System.Collections.Generic;
 
 namespace BR
 {
@@ -16,7 +18,7 @@ namespace BR
         /// </summary>
         /// <param name="novoFilme"></param>
         /// <returns></returns>
-        public static bool InsereFilme(Filme novoFilme)
+        public static bool InsereFilme(string novoFilme)
         {
             //verifica se o determinado filme já existe
             if (Filmes.ExisteFilme(novoFilme))
@@ -30,7 +32,7 @@ namespace BR
         /// </summary>
         /// <param name="nomefilme"></param>
         /// <returns></returns>
-        public static bool MostraDadosFilme(string nomefilme)
+        public static string MostraDadosFilme(string nomefilme)
         {
             return Filmes.MostraDadosFilme(nomefilme);
         }
@@ -48,7 +50,7 @@ namespace BR
         /// </summary>
         /// <param name="novoFilme"></param>
         /// <returns></returns>
-        public static List<Filme> RegistaFavoritoFilme(Filme novoFilme)
+        public static List<Filme> RegistaFavoritoFilme(string novoFilme)
         {
             return Filmes.RegistaFavoritoFilme(novoFilme);
         }

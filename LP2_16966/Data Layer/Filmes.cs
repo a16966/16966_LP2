@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2019/06/03
+// Versão: 1
+// Comentários: Classe de Filmes
+
 using BO;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace DL
 {
+    ///classe Filmes
     public class Filmes
     {
         #region ESTADO
@@ -28,6 +32,11 @@ namespace DL
         {
             listaFilmes = new List<Filme>();
 
+        }
+
+        public static bool InsereFilme(string novoFilme)
+        {
+            throw new NotImplementedException();
         }
 
         #region PROPRIEDADES
@@ -74,12 +83,13 @@ namespace DL
         /// </summary>
         /// <param name="filme"></param>
         /// <returns></returns>
-        public static bool ExisteFilme(Filme filme)
+        /// 
+        public static bool ExisteFilme(string filme)
         {
             foreach (Filme f in listaFilmes)
             {
 
-                if (f == filme)
+                if (f.Titulo == filme)
                 return true;
             }
 
@@ -90,21 +100,23 @@ namespace DL
         /// </summary>
         /// <param name="nomefilme"></param>
         /// <returns></returns>
-        public static bool MostraDadosFilme(string nomefilme)
+        public static string MostraDadosFilme(string nomefilme)
         {
             foreach (Filme f in listaFilmes)
             {
-                if (f.Titulo == nomefilme)
-                    return true;
-                Console.WriteLine("Dados do filme: Titulo{0}  Genero{1}  Data:{2}/{3}  ID{4}  Diretor{5}  Minutos do Filme{6} Rating{7} \n\n", f.Titulo, f.Genero, f.AnoFilme, f.MesFilme, f.IdFilme, f.Diretor, f.MinutosFilmme, f.Rating);
+                if (f.Titulo == nomefilme);
+
+                string x = f.Titulo + f.AnoFilme + f.Diretor + f.Genero + f.IdFilme + f.MesFilme + f.MinutosFilmme + f.Rating + f.Titulo;
+                return x;
             }
-            return false;
+            return null;
         }
         /// <summary>
         /// função que permitirá um filme
         /// </summary>
         /// <param name="IDFilme"></param>
         /// <returns></returns>
+        /// função editada
         public static bool RemoveFilme(int IDFilme)
         {
             bool result = false;
@@ -113,24 +125,7 @@ namespace DL
                 {
                     if (f.IdFilme == IDFilme)
                     {
-                    Console.WriteLine("Pretende eliminar o filme?\n\n");
-                    Console.WriteLine("\t1-Sim;\n");
-                    Console.WriteLine("\t2-Nao;\n");
-                    int option = Int32.Parse(Console.ReadLine());
-                    switch (option)
-                    {
-                        default:
-                            Console.WriteLine("\nIntroduza ou a tecla 1 ou 2 apenas!");
-                            Console.ReadKey();
-                            break;
-                        case 1:
-                            result = true;
-                            Console.WriteLine("\nFilme removido com sucesso");
-                            listaFilmes.Remove(f);
-                            break;
-                        case 2:
-                            break;
-                    }
+                     listaFilmes.Remove(f);
                     break; 
                     }
                 }
@@ -142,33 +137,17 @@ namespace DL
         /// </summary>
         /// <param name="novoFilme"></param>
         /// <returns></returns>
-        public static List<Filme> RegistaFavoritoFilme(Filme novoFilme)
+        /// função editada
+        public static List<Filme> RegistaFavoritoFilme(string novoFilme)
         {
             List<Filme> conjuntoFilmesFavoritos = new List<Filme>();
 
             foreach (Filme f in listaFilmes)
             {
-                if (f == novoFilme)
+                if (f.Titulo == novoFilme)
                 {
-                    Console.WriteLine("Pretende adicionar o filme aos favoritos?\n\n");
-                    Console.WriteLine("\t1-Sim;\n");
-                    Console.WriteLine("\t2-Nao;\n");
-                    int option = Int32.Parse(Console.ReadLine());
-                    switch (option)
-                    {
-                        default:
-                            Console.WriteLine("\nIntroduza ou a tecla 1 ou 2 apenas!");
-                            Console.ReadKey();
-                            break;
-                        case 1:
 
-                            Console.WriteLine("\nFilme adicionado com sucesso");
-                            conjuntoFilmesFavoritos.Add(novoFilme);
-                            break;
-                        case 2:
-                            break;
-                    }
-                    break;
+                    conjuntoFilmesFavoritos.Add(f);
                 }
             }
             return conjuntoFilmesFavoritos;

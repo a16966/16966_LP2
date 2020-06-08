@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Autor: Diogo Rocha
+// Email: a16966@alunos.ipca.pt
+// Data: 2019/06/03
+// Versão: 1
+// Comentários: Classe de Séries
 
 using BO;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace DL
 {
@@ -30,6 +32,11 @@ namespace DL
         {
             listaSeries = new List<Serie>();
 
+        }
+
+        public static bool InsereSerie(string novaSerie)
+        {
+            throw new NotImplementedException();
         }
 
         #region PROPRIEDADES
@@ -74,14 +81,13 @@ namespace DL
         /// </summary>
         /// <param name="filme"></param>
         /// <returns></returns>
-        public static bool ExisteSerie(Serie serie)
+        public static bool ExisteSerie(string serie)
         {
             foreach (Serie s in listaSeries)
             {
-                if (s == serie)
+                if (s.TituloSerie == serie)
                     return true;
             }
-
             return false;
         }
         /// <summary>
@@ -89,15 +95,17 @@ namespace DL
         /// </summary>
         /// <param name="nomeserie"></param>
         /// <returns></returns>
-        public static bool MostraDadosSeries(string nomeserie)
+        public static string MostraDadosSeries(string nomeserie)
         {
             foreach (Serie s in listaSeries)
             {
-                if (s.TituloSerie == nomeserie)
-                    return true;
-                Console.WriteLine("Dados da serie: Titulo{0}  Genero{1}  Data:{2}/{3}  ID{4}  Diretor{5}  Minutos episodio{6} Rating{7} Numero de episodios{8}  Numero de temporadas{9} \n\n", s.TituloSerie, s.GeneroSerie, s.AnoSerie, s.MesSerie, s.IdSerie, s.DiretorSerie, s.MinutosEpisodio, s.RatingSerie, s.NumeroEpisodios, s.NumeroTemporadas);
+                if (s.TituloSerie == nomeserie) {
+
+                    string x = s.AnoSerie + s.DiretorSerie + s.GeneroSerie + s.IdSerie + s.MesSerie + s.MinutosEpisodio + s.NumeroTemporadas + s.RatingSerie + s.TituloSerie;
+                return x;
+                }
             }
-            return false;
+            return null;
         }
         /// <summary>
         /// função que permitirá um filme
@@ -112,62 +120,33 @@ namespace DL
             {
                 if (f.IdSerie == IDSerie)
                 {
-                    Console.WriteLine("Pretende eliminar a serie?\n\n");
-                    Console.WriteLine("\t1-Sim;\n");
-                    Console.WriteLine("\t2-Nao;\n");
-                    int option = Int32.Parse(Console.ReadLine());
-                    switch (option)
-                    {
-                        default:
-                            Console.WriteLine("\nIntroduza ou a tecla 1 ou 2 apenas!");
-                            Console.ReadKey();
-                            break;
-                        case 1:
-                            result = true;
-                            Console.WriteLine("\n Serie removida com sucesso");
-                            listaSeries.Remove(f);
-                            break;
-                        case 2:
-                            break;
-                    }
+                    ListaSeries.Remove(f);
                     break;
                 }
             }
             return result;
         }
 
+
+
+
         /// <summary>
         /// Função que insere serie nos favoritos e mostra no fim quantos estão nos favoritos
         /// </summary>
         /// <param name="novaSerie"></param>
         /// <returns></returns>
-        public static List<Serie> RegistaFavoritoSerie(Serie novaSerie)
+        /// 
+        public static List<Serie> RegistaFavoritoSerie(string novaSerie)
         {
             List<Serie> conjuntoSeriesFavoritas = new List<Serie>();
 
             foreach (Serie s in listaSeries)
             {
-                if (s == novaSerie)
+                if (s.TituloSerie == novaSerie)
                 {
-                    Console.WriteLine("Pretende adicionar a serie aos favoritos?\n\n");
-                    Console.WriteLine("\t1-Sim;\n");
-                    Console.WriteLine("\t2-Nao;\n");
-                    int option = Int32.Parse(Console.ReadLine());
-                    switch (option)
-                    {
-                        default:
-                            Console.WriteLine("\nIntroduza ou a tecla 1 ou 2 apenas!");
-                            Console.ReadKey();
-                            break;
-                        case 1:
+                            conjuntoSeriesFavoritas.Add(s);
 
-                            Console.WriteLine("\nFSerie adicionada com sucesso");
-                            conjuntoSeriesFavoritas.Add(novaSerie);
-                            break;
-                        case 2:
-                            break;
-                    }
-                    break;
+                break;
                 }
             }
             return conjuntoSeriesFavoritas;
