@@ -1,6 +1,6 @@
 ﻿// Autor: Diogo Rocha
 // Email: a16966@alunos.ipca.pt
-// Data: 2019/06/03
+// Data: 2020/06/03
 // Versão: 1
 // Comentários: Classe de Utilizadores
 
